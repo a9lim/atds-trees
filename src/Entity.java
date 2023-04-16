@@ -1,12 +1,28 @@
-import java.awt.Image;
-public abstract class Entity {
-    protected Image sprite;
-    protected int[] pos = new int[2];
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 
-    public Entity(Image a, int u, int v){
+public abstract class Entity {
+    protected BufferedImage sprite;
+    protected int[] pos;
+
+    protected int[] dim;
+
+    protected int hbrad;
+
+    public Entity(BufferedImage a, int u, int v, int h){
+        hbrad = h;
         sprite = a;
-        pos[0] = u;
-        pos[1] = v;
+        pos = new int[]{u,v};
+        dim = new int[]{a.getWidth()/2,a.getHeight()/2};
+    }
+
+    public Entity(String a, int u, int v, int h){
+        hbrad = h;
+        sprite = getImage(a);
+        pos = new int[]{u,v};
+        dim = new int[]{sprite.getWidth()/2,sprite.getHeight()/2};
     }
 
     public abstract void update();
@@ -16,7 +32,7 @@ public abstract class Entity {
         return sprite;
     }
 
-    public void setSprite(Image sprite) {
+    public void setSprite(BufferedImage sprite) {
         this.sprite = sprite;
     }
 
@@ -35,4 +51,25 @@ public abstract class Entity {
     public void setY(int y) {
         pos[1] = y;
     }
+
+    public int getHbrad() {
+        return hbrad;
+    }
+
+    public BufferedImage getImage(String s) {
+        try {
+            return ImageIO.read(bPanel.class.getClassLoader().getResource(s));
+        } catch (Exception ex) {
+            System.err.println("images broke");
+            System.err.println(ex.getStackTrace());
+            return null;
+        }
+    }
+
+    public void paint(Graphics g, ImageObserver ob) {
+        g.drawImage(sprite, pos[0]-dim[0], pos[1]-dim[1], ob);
+    }
+
 }
+
+

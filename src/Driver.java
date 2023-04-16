@@ -1,11 +1,13 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-public class Driver extends JFrame implements KeyListener, ActionListener {
+
+public class Driver extends JFrame implements ActionListener {
     private bPanel p;
 
 //    public static void setspeed( int s ){
@@ -19,29 +21,25 @@ public class Driver extends JFrame implements KeyListener, ActionListener {
         e.add(p);
         add(e);
         pack();
-        addKeyListener(this);
+        addKeyListener(p);
         new Timer(5, this).start();
         repaint();
+        try{
+            Clip clip = AudioSystem.getClip();
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+                    Driver.class.getResourceAsStream("gangnamstyle-01.wav"));
+            clip.open(inputStream);
+            clip.start();
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+        }
     }
 
     public void repaint(){
         p.repaint();
-//        secondary.clear();
-//        secscreen.displayOutput(secondary);
         super.repaint();
         Toolkit.getDefaultToolkit().sync();
     }
-
-    public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
-
-        }
-        repaint();
-    }
-
-    public void keyReleased(KeyEvent e) { }
-
-    public void keyTyped(KeyEvent e) { }
 
     public void actionPerformed(ActionEvent e){
         p.grunk();
@@ -53,4 +51,5 @@ public class Driver extends JFrame implements KeyListener, ActionListener {
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.setVisible(true);
     }
+
 }
