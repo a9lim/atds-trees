@@ -17,6 +17,8 @@ public class Fish extends Enemy{
                 b.put(new int[]{0, 20, 40, 60}, new STATE[]{STATE.SPIN, STATE.SPEED, STATE.SLOW, STATE.GO});
                 waves.add(new CircleWave(30, pos[0], pos[1], 20, b));
                 counter = 0;
+
+                th.addAll(waves.getLast().getEntities());
             }
         } else {
             if(counter++ > 4) {
@@ -29,9 +31,10 @@ public class Fish extends Enemy{
                 }
                 waves.add(new CircleWave(30, pos[0], pos[1], 20, b));
                 counter = 0;
+
+                th.addAll(waves.getLast().getEntities());
             }
         }
-        th.addAll(waves.getLast().getEntities());
         for(Wave w: waves)
             w.update();
     }

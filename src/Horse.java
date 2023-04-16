@@ -10,6 +10,7 @@ public class Horse extends Enemy {
         t = new Timer(50, this);
     }
     public void actionPerformed(ActionEvent e) {
+
         if(lives > 1) {
             if (counter++ > 15) {
                 fleeb(p.getX() + (int) (Math.random() * 200) - 100, (int) (Math.random() * 200) + 75);
@@ -21,12 +22,12 @@ public class Horse extends Enemy {
             if(counter++ > 10) {
                 fleeb(250, 100);
                 Behavior<STATE> b = new Behavior<>();
-                b.put(new int[]{0, 10}, new STATE[]{STATE.SPEED, STATE.GO});
-                waves.add(new ForwardWave(30, pos[1]+10, b));
+                b.put(new int[]{0, 20}, new STATE[]{STATE.SPEED, STATE.GO});
+                waves.add(new ForwardWave(20, pos[1]+10, b));
                 counter = 0;
+                th.addAll(waves.getLast().getEntities());
             }
         }
-        th.addAll(waves.getLast().getEntities());
         for(Wave w: waves)
             w.update();
     }
