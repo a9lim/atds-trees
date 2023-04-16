@@ -21,17 +21,19 @@ public class bPanel extends JPanel implements KeyListener {
 
         try {
             stage = 0;
-            scenes = new Scene[5];
+            scenes = new Scene[6];
+
+            scenes[0] = new Titlescene(this);
 
             String[] words = new String[]{"I'll be your killer fish for the evening","cringe"};
-            scenes[0] = new Cutscene(this,words,"fish3.png","Fish:");
-            scenes[1] = new Gamescene(this,1);
+            scenes[1] = new Cutscene(this,words,"fish3.png","Fish:");
+            scenes[2] = new Gamescene(this,1);
             words = new String[]{"hello","why the long face?"};
-            scenes[2] = new Cutscene(this,words,"horse2.png","Horse:");
-            scenes[3] = new Gamescene(this,3);
+            scenes[3] = new Cutscene(this,words,"horse2.png","Horse:");
+            scenes[4] = new Gamescene(this,3);
 
             words = new String[]{"yippee"};
-            scenes[4] = new Cutscene(this,words,"fish3.png","Fish:");
+            scenes[5] = new Cutscene(this,words,"fish3.png","Fish:");
             scene = scenes[0];
 
         } catch (Exception grum) {
