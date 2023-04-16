@@ -2,7 +2,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 public class vEntity extends Entity{
-    public static final double dt = 0.01;
+    public static final double dt = 0.05;
     private double[] tpos;
     private double[] vel;
 

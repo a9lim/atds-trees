@@ -32,8 +32,7 @@ public class bPanel extends JPanel implements KeyListener {
 
             words = new String[]{"yippee"};
             scenes[4] = new Cutscene(this,words,"fish3.png","Fish:");
-            scene = scenes[3];
-            ((Gamescene)(scene)).start();
+            scene = scenes[0];
 
         } catch (Exception grum) {
             System.err.println("something in this is fucked, email me if you see this");

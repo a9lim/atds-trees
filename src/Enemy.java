@@ -73,7 +73,7 @@ public abstract class Enemy extends hEntity implements ActionListener {
     }
 
     public void drophone(int x, int y){
-        th.add(new vEntity("pl.png",x,y,(p.getX()-x)/5.,(p.getY()-y)/5.,5,STATE.SPEED));
+        th.add(new vEntity("pl.png",x,y,(p.getX()-x)/50.,(p.getY()-y)/50.,5,STATE.SPEED));
     }
 
     public void start(){

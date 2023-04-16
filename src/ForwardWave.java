@@ -7,6 +7,6 @@ public class ForwardWave extends Wave {
         entities = new LinkedList<>();
         BufferedImage im = getImage("pl.png");
         for (int i = 0; i < n; i++)
-            entities.add(new vEntity(im, i*540/n, y, 2*Math.random(), 10 + Math.random(),5,b.get(0)));
+            entities.add(new vEntity(im, i*540/n, y, 10*Math.random()-5, 30 + 10*Math.random()-5,5,b.get(0)));
     }
 }
