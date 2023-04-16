@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 public abstract class Scene {
+    protected BufferedImage bg;
     protected bPanel pan;
     public Scene(bPanel p){
         pan = p;

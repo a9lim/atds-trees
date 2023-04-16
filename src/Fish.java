@@ -6,7 +6,7 @@ public class Fish extends Enemy{
     private int counter = 11;
     private boolean flip = true;
     public Fish(Gamescene sc){
-        super(sc,"fish.png","fish2.png",250,"Fish");
+        super(sc,"fish.png","fish2.png",350,"Fish");
         t = new Timer(50, this);
     }
     public void actionPerformed(ActionEvent e) {
@@ -14,7 +14,7 @@ public class Fish extends Enemy{
             if(counter++ > 10) {
                 fleeb(p.getX() + (int) (Math.random() * 200) - 100, (int) (Math.random() * 200) + 75);
                 Behavior<STATE> b = new Behavior<>();
-                b.put(new int[]{0, 20, 40, 60}, new STATE[]{STATE.SPIN, STATE.SPEED, STATE.SLOW, STATE.GO});
+                b.put(new int[]{0, 30, 50, 60}, new STATE[]{STATE.SPIN, STATE.SPEED, STATE.SLOW, STATE.GO});
                 waves.add(new CircleWave(30, pos[0], pos[1], 20, b));
                 counter = 0;
 
