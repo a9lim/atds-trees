@@ -10,7 +10,7 @@ public class Fish extends Enemy{
         t = new Timer(50, this);
     }
     public void actionPerformed(ActionEvent e) {
-        if(lives > 1) {
+        if(lives > 0) {
             if(counter++ > 10) {
                 fleeb(p.getX() + (int) (Math.random() * 200) - 100, (int) (Math.random() * 200) + 75);
                 Behavior<STATE> b = new Behavior<>();
