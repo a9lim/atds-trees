@@ -34,7 +34,7 @@ public abstract class Enemy extends hEntity implements ActionListener {
         p = sc.getPlayer();
         th = sc.getThing();
         waves = new LinkedList<>();
-        lives = 2;
+        lives = 1;
     }
 
     public void setVelX(int u){

@@ -11,7 +11,7 @@ public class Horse extends Enemy {
     }
     public void actionPerformed(ActionEvent e) {
 
-        if(lives > 1) {
+        if(lives > 0) {
             if (counter++ > 15) {
                 fleeb(p.getX() + (int) (Math.random() * 200) - 100, (int) (Math.random() * 200) + 75);
                 counter = 0;
