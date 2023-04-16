@@ -8,10 +8,11 @@ import java.util.ListIterator;
 
 public class bPanel extends JPanel implements KeyListener {
     private Image bg;
-    private LinkedList<Entity> thing;
-    private Player player;
-    private Enemy enemy;
-    private Entity temp;
+    private Scene scene;
+
+    private Scene[] scenes;
+
+    private int stage;
 
     public static final int[] SIZE = new int[]{540, 810};
 
@@ -19,54 +20,49 @@ public class bPanel extends JPanel implements KeyListener {
         this.setPreferredSize(new Dimension(SIZE[0], SIZE[1]));
 
         try {
-            thing = new LinkedList<>();
-            player = new Player(thing);
-            thing.add(new Enemy(player, thing));
-//            this.bg = this.getImage("bg.png");
+            stage = 0;
+            scenes = new Scene[5];
+
+            String[] words = new String[]{"I'll be your killer fish for the evening","cringe"};
+            scenes[0] = new Cutscene(this,words,"fish3.png","Fish:");
+            scenes[1] = new Gamescene(this,1);
+            words = new String[]{"hello","why the long face?"};
+            scenes[2] = new Cutscene(this,words,"horse2.png","Horse:");
+            scenes[3] = new Gamescene(this,3);
+
+            words = new String[]{"yippee"};
+            scenes[4] = new Cutscene(this,words,"fish3.png","Fish:");
+            scene = scenes[3];
+            ((Gamescene)(scene)).start();
 
         } catch (Exception grum) {
             System.err.println("something in this is fucked, email me if you see this");
+            System.err.println(grum.getMessage());
         }
     }
 
     public void grunk(){
-        ListIterator<Entity> it = thing.listIterator();
-        while(it.hasNext()) {
-            temp = it.next();
-            temp.update();
-            if(temp.getX() < 0 || temp.getY() < 0 || temp.getX() > bPanel.SIZE[0] || temp.getY() > bPanel.SIZE[1])
-                it.remove();
-        }
-        player.update();
+        scene.update();
     }
 
     public void paint(Graphics g) {
-        for(Entity t: thing)
-            t.paint(g,this);
-        player.paint(g,this);
-        this.paintComponents(g);
+        scene.display(g);
     }
 
     public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()){
-            case KeyEvent.VK_LEFT -> player.setVelX(-1);
-            case KeyEvent.VK_RIGHT -> player.setVelX(1);
-            case KeyEvent.VK_DOWN -> player.setVelY(1);
-            case KeyEvent.VK_UP -> player.setVelY(-1);
-            case KeyEvent.VK_SHIFT -> player.setSlow(true);
-            case KeyEvent.VK_Z -> player.setShoot(true);
-        }
+        scene.keyPress(e);
     }
     public void keyReleased(KeyEvent e){
-        switch (e.getKeyCode()){
-            case KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT -> player.setVelX(0);
-            case KeyEvent.VK_UP, KeyEvent.VK_DOWN -> player.setVelY(0);
-            case KeyEvent.VK_SHIFT -> player.setSlow(false);
-            case KeyEvent.VK_Z -> player.setShoot(false);
-        }
+        scene.keyRelease(e);
     }
     public void keyTyped(KeyEvent e) { }
 
+    public void advance() {
+        scene = scenes[stage++];
+        if(scene instanceof Gamescene)
+            ((Gamescene)scene).start();
+        repaint();
+    }
 }
 enum world {
     TORUS,

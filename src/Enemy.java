@@ -2,30 +2,39 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.util.LinkedList;
 
-public class Enemy extends hEntity implements ActionListener {
+public abstract class Enemy extends hEntity implements ActionListener {
 
-    private int[] vel;
-    private boolean die;
+    protected int[] vel;
+    protected boolean die;
 
-    private Player p;
+    protected Player p;
 
-    private LinkedList<Entity> th;
+    protected LinkedList<Entity> th;
 
-    private LinkedList<CircleWave> waves;
-    private Timer t;
+    protected LinkedList<Wave> waves;
 
-    public Enemy(Player pl, LinkedList<Entity> thing){
-        super("fish.png",150,150,15,100);
+    protected Gamescene source;
+
+    protected Timer t;
+
+    protected BufferedImage face;
+
+    protected int lives;
+
+    public Enemy(Gamescene sc, String s, String f, int i, String n){
+        super(s,150,150,15,i, n);
         die = false;
         vel = new int[2];
-        p = pl;
-        th = thing;
+        face = getImage(f);
+        source = sc;
+        p = sc.getPlayer();
+        th = sc.getThing();
         waves = new LinkedList<>();
-        t = new Timer(500, this);
-        t.start();
+        lives = 2;
     }
 
     public void setVelX(int u){
@@ -36,12 +45,23 @@ public class Enemy extends hEntity implements ActionListener {
     }
 
     public void update(){
+        if (pos[0] + vel[0] > bPanel.SIZE[0] || pos[0] + vel[0] < 0){
+            vel[0] = -vel[0];
+        }
+        if (pos[1] + vel[1] > bPanel.SIZE[1] || pos[1] + vel[1] < 0){
+            vel[1] = -vel[1];
+        }
         pos[0] += vel[0];
         pos[1] += vel[1];
         if(p.isShoot() && Math.abs(pos[0]-p.pos[0]) < 5 + hbrad) {
             decHealth(1);
             if(health < 0) {
+                lives--;
+                health = sthealth;
+            }
+            if(lives < 0) {
                 th.clear();
+                source.advance();
                 t.stop();
             }
         }
@@ -51,14 +71,17 @@ public class Enemy extends hEntity implements ActionListener {
         vel[0] = (x-pos[0])/40;
         vel[1] = (y-pos[1])/40;
     }
-    public void actionPerformed(ActionEvent e) {
-        fleeb((int)(Math.random()*200)+50,(int)(Math.random()*300)+50);
-        Behavior<STATE> b = new Behavior<>();
-        b.put(new int[]{0,2,5},new STATE[]{STATE.SPIN,STATE.SPEED,STATE.SLOW});
-        waves.add(new CircleWave(20,pos[0],pos[1],50,b));
-        th.addAll(waves.getLast().getEntities());
-        for(Wave w: waves)
-            w.update();
+
+    public void drophone(int x, int y){
+        th.add(new vEntity("pl.png",x,y,(p.getX()-x)/5.,(p.getY()-y)/5.,5,STATE.SPEED));
+    }
+
+    public void start(){
+        t.start();
+    }
+
+    public BufferedImage getFace() {
+        return face;
     }
 
     public void paint(Graphics g, ImageObserver ob) {

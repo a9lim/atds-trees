@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.util.LinkedList;
 
@@ -10,16 +11,19 @@ public class Player extends Entity{
     private int[] vel;
     private boolean die;
     private boolean shoot;
+    private String name;
+    private BufferedImage face;
 
     public Player(LinkedList<Entity> u){
 //        super("cubo.png",0,0,5);
-        super("cubo.png",150,750,5);
+        super("cubo.png",150,750,3);
+        face = getImage("cubo2.png");
         b = u;
         slow = false;
         die = false;
         shoot = false;
         vel = new int[2];
-
+        name = "Cubo";
     }
 
     public void setVelX(int u){
@@ -31,11 +35,11 @@ public class Player extends Entity{
 
     public void update(){
         if(slow) {
-            pos[0] += vel[0];
-            pos[1] += vel[1];
-        }else{
             pos[0] += 2*vel[0];
             pos[1] += 2*vel[1];
+        }else{
+            pos[0] += 3*vel[0];
+            pos[1] += 3*vel[1];
         }
         for(Entity v: b){
             if(Math.hypot(v.getX()-pos[0], v.getY()-pos[1]) < hbrad + v.getHbrad())
@@ -52,6 +56,10 @@ public class Player extends Entity{
         return shoot;
     }
 
+    public BufferedImage getFace() {
+        return face;
+    }
+
     public void paint(Graphics g, ImageObserver ob) {
         if(die) {
             g.setColor(Color.RED);
@@ -60,7 +68,7 @@ public class Player extends Entity{
         }
         if(shoot) {
             g.setColor(Color.RED);
-            g.fillRect(pos[0]-5,-1,10,pos[1]-dim[1] - 5);
+            g.fillRect(pos[0]-2,-1,4,pos[1]-dim[1] - 2);
             g.setColor(Color.BLACK);
         }
         g.drawImage(sprite, pos[0]-dim[0], pos[1]-dim[1], ob);
