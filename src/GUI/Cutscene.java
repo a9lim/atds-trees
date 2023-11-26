@@ -1,5 +1,5 @@
-import javax.imageio.ImageIO;
-import javax.swing.*;
+package GUI;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -10,7 +10,7 @@ public class Cutscene extends Scene{
     private BufferedImage player;
     private BufferedImage enemy;
     private String name;
-    public Cutscene(bPanel p, String[] s,String face, String na){
+    public Cutscene(bPanel p, String[] s, String face, String na){
         super(p);
         dialog = s;
         i = 0;

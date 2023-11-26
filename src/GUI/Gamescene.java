@@ -1,4 +1,5 @@
-import javax.swing.*;
+package GUI;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;

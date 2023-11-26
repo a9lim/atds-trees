@@ -1,12 +1,13 @@
+import GUI.Gamescene;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.util.LinkedList;
 
 public class Horse extends Enemy {
     private int counter = 16;
     private boolean flip = true;
     public Horse(Gamescene sc){
-        super(sc,"horse.png","horse2.png",350,"Horse");
+        super(sc, "horse.png", "horse2.png",350,"Horse");
         t = new Timer(50, this);
     }
     public void actionPerformed(ActionEvent e) {
