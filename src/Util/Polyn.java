@@ -1,4 +1,4 @@
-import java.util.*;
+package Util;
 
 // polynomial class
 public class Polyn {

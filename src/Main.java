@@ -1,3 +1,5 @@
+import Util.Polyn;
+
 public class Main {
     public static void main(String[] args){
         double[] fleemius = {-6,14,-32,28,-24};

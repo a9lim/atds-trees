@@ -1,12 +1,13 @@
+import GUI.Gamescene;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.util.LinkedList;
 
 public class Fish extends Enemy{
     private int counter = 11;
     private boolean flip = true;
     public Fish(Gamescene sc){
-        super(sc,"fish.png","fish2.png",350,"Fish");
+        super(sc, "fish.png", "fish2.png",350,"Fish");
         t = new Timer(50, this);
     }
     public void actionPerformed(ActionEvent e) {
