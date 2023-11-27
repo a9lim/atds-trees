@@ -1,5 +1,12 @@
+package Entity.Conc;
+
+import Entity.Entity;
+import Entity.vEntity;
+import Entity.STATE;
 import GUI.Gamescene;
 import GUI.bPanel;
+import Wave.Wave;
+import Entity.hEntity;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,7 +62,7 @@ public abstract class Enemy extends hEntity implements ActionListener {
         }
         pos[0] += vel[0];
         pos[1] += vel[1];
-        if(p.isShoot() && Math.abs(pos[0]-p.pos[0]) < 5 + hbrad) {
+        if(p.isShoot() && Math.abs(pos[0]-p.getX()) < 5 + hbrad) {
             decHealth(1);
             if(health < 0) {
                 lives--;
@@ -75,7 +82,7 @@ public abstract class Enemy extends hEntity implements ActionListener {
     }
 
     public void drophone(int x, int y){
-        th.add(new vEntity("pl.png",x,y,(p.getX()-x)/50.,(p.getY()-y)/50.,5,STATE.SPEED));
+        th.add(new vEntity("pl.png",x,y,(p.getX()-x)/50.,(p.getY()-y)/50.,5, STATE.SPEED));
     }
 
     public void start(){

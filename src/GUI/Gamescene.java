@@ -1,5 +1,11 @@
 package GUI;
 
+import Entity.Conc.Enemy;
+import Entity.Conc.Fish;
+import Entity.Conc.Horse;
+import Entity.Conc.Player;
+import Entity.Entity;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;

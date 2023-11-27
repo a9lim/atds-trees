@@ -1,3 +1,5 @@
+package Entity;
+
 import java.util.HashMap;
 
 public class Behavior<T> {

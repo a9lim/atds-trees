@@ -1,3 +1,5 @@
+package Entity;
+
 import GUI.bPanel;
 
 import javax.imageio.ImageIO;

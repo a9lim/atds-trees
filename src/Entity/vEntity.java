@@ -1,4 +1,5 @@
-import java.awt.Image;
+package Entity;
+
 import java.awt.image.BufferedImage;
 
 public class vEntity extends Entity{
@@ -45,10 +46,4 @@ public class vEntity extends Entity{
     public void setState(STATE i){
         st = i;
     }
-}
-enum STATE {
-    SLOW,
-    SPEED,
-    SPIN,
-    GO
 }
