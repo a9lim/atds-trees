@@ -34,7 +34,7 @@ public abstract class hEntity extends Entity{
     public void paint(Graphics g, ImageObserver ob) {
         super.paint(g,ob);
         g.setColor(Color.RED);
-        g.drawArc(pos[0]-20,pos[1]-20,40,40,90,(int)(360*health/sthealth));
+        g.drawArc(pos[0]-20,pos[1]-20,40,40,90,360*health/sthealth);
         g.setColor(Color.BLACK);
     }
 }

@@ -19,7 +19,6 @@ public class Player extends Entity {
     private BufferedImage face;
 
     public Player(LinkedList<Entity> u){
-//        super("cubo.png",0,0,5);
         super("cubo.png",150,750,3);
         face = getImage("cubo2.png");
         b = u;

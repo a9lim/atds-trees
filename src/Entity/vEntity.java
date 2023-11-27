@@ -35,7 +35,6 @@ public class vEntity extends Entity{
 
     }
     public double[] forces() {
-//        return new double[]{-vel[1]+0.1*vel[0],vel[0]+0.1*vel[1]};
         return switch(st) {
             case SLOW -> new double[]{-0.1 * vel[0], -0.1 * vel[1]};
             case SPEED -> new double[]{0.1 * vel[0], 0.1 * vel[1]};
