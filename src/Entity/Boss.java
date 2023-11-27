@@ -1,5 +1,7 @@
 package Entity;
 
+import Util.OtherUtil;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
@@ -15,9 +17,7 @@ public abstract class Boss extends GameEntity {
     }
 
     public Boss(String a, int u, int v, int h, int hp, String n){
-        super(a,u,v,h);
-        sthealth = health = hp;
-        name = n;
+        this(OtherUtil.getImage(a),u,v,h,hp,n);
     }
 
     public int getHealth() {

@@ -39,7 +39,7 @@ public class Driver extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e){
-        p.grunk();
+        p.update();
         repaint();
     }
 

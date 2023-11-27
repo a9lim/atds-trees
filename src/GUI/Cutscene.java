@@ -1,5 +1,7 @@
 package GUI;
 
+import Util.OtherUtil;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -14,8 +16,8 @@ public class Cutscene extends Scene{
         super(p, (BufferedImage) null);
         dialog = s;
         i = 0;
-        player = getImage("cubo2.png");
-        enemy = getImage(face);
+        player = OtherUtil.getImage("cubo2.png");
+        enemy = OtherUtil.getImage(face);
         name = na;
     }
     public void display(Graphics g){

@@ -1,11 +1,13 @@
 package Entity;
 
+import Util.OtherUtil;
+
 import java.awt.image.BufferedImage;
 
 public class Bullet extends GameEntity {
     public static final double dt = 0.05;
-    private double[] tpos;
-    private double[] vel;
+    private final double[] tpos;
+    private final double[] vel;
 
     protected STATE st;
     public Bullet(BufferedImage a, int u, int v, double s, double t, int h, STATE g){
@@ -16,10 +18,7 @@ public class Bullet extends GameEntity {
     }
 
     public Bullet(String a, int u, int v, double s, double t, int h, STATE g){
-        super(a,u,v,h);
-        st = g;
-        tpos = new double[]{u,v};
-        vel = new double[]{s,t};
+        this(OtherUtil.getImage(a),u,v,s,t,h,g);
     }
 
     public void update(){

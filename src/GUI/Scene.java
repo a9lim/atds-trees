@@ -18,15 +18,6 @@ public abstract class Scene {
         pan = p;
         bg = OtherUtil.getImage(b);
     }
-    public BufferedImage getImage(String s) {
-        try {
-            return ImageIO.read(Scene.class.getClassLoader().getResource(s));
-        } catch (Exception ex) {
-            System.err.println("images broke");
-            System.err.println(ex.getStackTrace());
-            return null;
-        }
-    }
 
     public void advance() {
         pan.advance();

@@ -13,9 +13,9 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 
 public class Gamescene extends Scene{
-    private LinkedList<GameEntity> thing;
-    private Player player;
-    private Enemy enemy;
+    private final LinkedList<GameEntity> thing;
+    private final Player player;
+    private final Enemy enemy;
     private GameEntity temp;
 
     public Gamescene(bPanel p, int i){
@@ -42,25 +42,24 @@ public class Gamescene extends Scene{
     }
 
     public void display(Graphics g) {
-        for(GameEntity t: thing)
-            t.paint(g,pan);
+        thing.forEach(t -> t.paint(g,pan));
         player.paint(g,pan);
     }
 
     public void keyPress(KeyEvent e) {
         switch (e.getKeyCode()){
-            case KeyEvent.VK_LEFT -> player.setVelX(-1);
-            case KeyEvent.VK_RIGHT -> player.setVelX(1);
-            case KeyEvent.VK_DOWN -> player.setVelY(1);
-            case KeyEvent.VK_UP -> player.setVelY(-1);
+            case KeyEvent.VK_LEFT -> player.left();
+            case KeyEvent.VK_RIGHT -> player.right();
+            case KeyEvent.VK_DOWN -> player.down();
+            case KeyEvent.VK_UP -> player.up();
             case KeyEvent.VK_SHIFT -> player.setSlow(true);
             case KeyEvent.VK_Z -> player.setShoot(true);
         }
     }
     public void keyRelease(KeyEvent e){
         switch (e.getKeyCode()){
-            case KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT -> player.setVelX(0);
-            case KeyEvent.VK_UP, KeyEvent.VK_DOWN -> player.setVelY(0);
+            case KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT -> player.lrstop();
+            case KeyEvent.VK_UP, KeyEvent.VK_DOWN -> player.udstop();
             case KeyEvent.VK_SHIFT -> player.setSlow(false);
             case KeyEvent.VK_Z -> player.setShoot(false);
         }
