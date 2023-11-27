@@ -1,3 +1,9 @@
+package Wave;
+
+import Entity.Behavior;
+import Entity.STATE;
+import Entity.vEntity;
+
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 

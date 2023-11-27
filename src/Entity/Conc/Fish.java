@@ -1,4 +1,10 @@
+package Entity.Conc;
+
+import Entity.Behavior;
+import Entity.STATE;
 import GUI.Gamescene;
+import Wave.CircleWave;
+import Wave.Wave;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -7,7 +13,7 @@ public class Fish extends Enemy{
     private int counter = 11;
     private boolean flip = true;
     public Fish(Gamescene sc){
-        super(sc, "fish.png", "fish2.png",350,"Fish");
+        super(sc, "fish.png", "fish2.png",350,"Entity.Conc.Fish");
         t = new Timer(50, this);
     }
     public void actionPerformed(ActionEvent e) {

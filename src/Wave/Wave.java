@@ -1,3 +1,8 @@
+package Wave;
+
+import Entity.Behavior;
+import Entity.STATE;
+import Entity.vEntity;
 import GUI.bPanel;
 
 import javax.imageio.ImageIO;

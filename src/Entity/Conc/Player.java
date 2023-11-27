@@ -1,10 +1,14 @@
+package Entity.Conc;
+
+import Entity.Entity;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.util.LinkedList;
 
 
-public class Player extends Entity{
+public class Player extends Entity {
 
     private LinkedList<Entity> b;
     private boolean slow;
