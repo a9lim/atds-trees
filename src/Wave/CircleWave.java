@@ -2,7 +2,7 @@ package Wave;
 
 import Entity.Behavior;
 import Entity.STATE;
-import Entity.vEntity;
+import Entity.Bullet;
 
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
@@ -13,6 +13,6 @@ public class CircleWave extends Wave {
         entities = new LinkedList<>();
         BufferedImage im = getImage("pl.png");
         for (int i = 0; i < n; i++)
-            entities.add(new vEntity(im, x + cos(n, i, r), y + sin(n, i, r), cos(n, i, r), sin(n, i, r),5,b.get(0)));
+            entities.add(new Bullet(im, x + cos(n, i, r), y + sin(n, i, r), cos(n, i, r), sin(n, i, r),5,b.get(0)));
     }
 }

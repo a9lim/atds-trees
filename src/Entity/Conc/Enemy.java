@@ -1,28 +1,31 @@
 package Entity.Conc;
 
-import Entity.Entity;
-import Entity.vEntity;
+import Entity.GameEntity;
+import Entity.Bullet;
 import Entity.STATE;
 import GUI.Gamescene;
 import GUI.bPanel;
 import Wave.Wave;
-import Entity.hEntity;
+import Entity.Boss;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.util.LinkedList;
 
-public abstract class Enemy extends hEntity implements ActionListener {
+import static Util.OtherUtil.getImage;
+
+public abstract class Enemy extends Boss implements ActionListener {
 
     protected int[] vel;
     protected boolean die;
 
     protected Player p;
 
-    protected LinkedList<Entity> th;
+    protected LinkedList<GameEntity> th;
 
     protected LinkedList<Wave> waves;
 
@@ -44,6 +47,7 @@ public abstract class Enemy extends hEntity implements ActionListener {
         th = sc.getThing();
         waves = new LinkedList<>();
         lives = 1;
+        t = new Timer(50, this);
     }
 
     public void setVelX(int u){
@@ -82,7 +86,7 @@ public abstract class Enemy extends hEntity implements ActionListener {
     }
 
     public void drophone(int x, int y){
-        th.add(new vEntity("pl.png",x,y,(p.getX()-x)/50.,(p.getY()-y)/50.,5, STATE.SPEED));
+        th.add(new Bullet("pl.png",x,y,(p.getX()-x)/50.,(p.getY()-y)/50.,5, STATE.SPEED));
     }
 
     public void start(){
@@ -101,5 +105,9 @@ public abstract class Enemy extends hEntity implements ActionListener {
         } else {
             super.paint(g, ob);
         }
+    }
+
+    public void actionPerformed(ActionEvent e){
+        waves.forEach(w -> w.update());
     }
 }
