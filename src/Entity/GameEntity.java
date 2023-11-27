@@ -1,8 +1,5 @@
 package Entity;
 
-import GUI.bPanel;
-
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
@@ -10,12 +7,12 @@ import java.awt.image.ImageObserver;
 import static Util.OtherUtil.getImage;
 
 public abstract class GameEntity {
-    protected BufferedImage sprite;
-    protected int[] pos;
+    protected final BufferedImage sprite;
+    protected final int[] pos;
 
-    protected int[] dim;
+    protected final int[] dim;
 
-    protected int hbrad;
+    protected final int hbrad;
 
     public GameEntity(BufferedImage a, int u, int v, int h){
         hbrad = h;
@@ -35,10 +32,6 @@ public abstract class GameEntity {
 
     public Image getSprite() {
         return sprite;
-    }
-
-    public void setSprite(BufferedImage sprite) {
-        this.sprite = sprite;
     }
 
     public int getX() {

@@ -30,14 +30,7 @@ public abstract class Wave {
             return null;
         }
     }
-    // integer approximations for trig of a certain radius, increment, and subdivision
 
-    public int sin(int n, int i, double r){
-        return (int)(r*Math.sin(2*Math.PI*i/n));
-    }
-    public int cos(int n, int i, double r){
-        return (int)(r*Math.cos(2*Math.PI*i/n));
-    }
     public LinkedList<Bullet> getEntities() {
         return entities;
     }

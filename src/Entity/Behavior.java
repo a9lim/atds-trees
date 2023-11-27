@@ -3,7 +3,7 @@ package Entity;
 import java.util.HashMap;
 
 public class Behavior<T> {
-    private HashMap<Integer,T> timings;
+    private final HashMap<Integer,T> timings;
 
     public Behavior(){
         timings = new HashMap<>();

@@ -6,8 +6,7 @@ import java.awt.event.KeyEvent;
 public class Titlescene extends Scene {
     public static final String title = "ลูกทุ่งเดธ";
     public Titlescene(bPanel p) {
-        super(p);
-        bg = getImage("cover.png");
+        super(p,"cover.png");
     }
 
     public void display(Graphics g) {

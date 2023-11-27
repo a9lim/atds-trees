@@ -15,4 +15,13 @@ public class OtherUtil {
             return null;
         }
     }
+
+    // integer approximations for trig of a certain radius, increment, and subdivision
+
+    public static int sin(int n, int i, double r){
+        return (int)(r*Math.sin(2*Math.PI*i/n));
+    }
+    public static int cos(int n, int i, double r){
+        return (int)(r*Math.cos(2*Math.PI*i/n));
+    }
 }

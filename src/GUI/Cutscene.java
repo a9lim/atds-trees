@@ -11,7 +11,7 @@ public class Cutscene extends Scene{
     private final BufferedImage enemy;
     private final String name;
     public Cutscene(bPanel p, String[] s, String face, String na){
-        super(p);
+        super(p, (BufferedImage) null);
         dialog = s;
         i = 0;
         player = getImage("cubo2.png");

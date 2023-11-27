@@ -2,28 +2,26 @@ package Entity.Conc;
 
 import Entity.Boss;
 import Entity.GameEntity;
+import Util.OtherUtil;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.util.LinkedList;
 
-import static Util.OtherUtil.getImage;
-
 
 public class Player extends Boss {
 
     private LinkedList<GameEntity> b;
     private boolean slow;
-    private int[] vel;
+    private final int[] vel;
     private boolean die;
     private boolean shoot;
-    private String name;
     private BufferedImage face;
 
     public Player(LinkedList<GameEntity> u){
         super("cubo.png",150,750,3,5,"Cubo");
-        face = getImage("cubo2.png");
+        face = OtherUtil.getImage("cubo2.png");
         b = u;
         slow = false;
         die = false;

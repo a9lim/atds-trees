@@ -6,7 +6,7 @@ import java.awt.image.ImageObserver;
 
 public abstract class Boss extends GameEntity {
     protected int health;
-    protected String name;
+    protected final String name;
     protected final int sthealth;
     public Boss(BufferedImage a, int u, int v, int h, int hp, String n){
         super(a,u,v,h);

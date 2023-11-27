@@ -8,6 +8,7 @@ import Entity.GameEntity;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -18,7 +19,7 @@ public class Gamescene extends Scene{
     private GameEntity temp;
 
     public Gamescene(bPanel p, int i){
-        super(p);
+        super(p, (BufferedImage) null);
         thing = new LinkedList<>();
         player = new Player(thing);
         enemy = switch(i) {
