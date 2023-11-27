@@ -12,10 +12,6 @@ import java.awt.event.ActionListener;
 public class Driver extends JFrame implements ActionListener {
     private bPanel p;
 
-//    public static void setspeed( int s ){
-//        speed = s;
-//    }
-
     public Driver(){
         super();
         p = new bPanel();

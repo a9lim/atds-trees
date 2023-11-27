@@ -20,7 +20,7 @@ public class Fish extends Enemy{
         if(lives > 0) {
             if(counter++ > 10) {
                 fleeb(p.getX() + (int) (Math.random() * 200) - 100, (int) (Math.random() * 200) + 75);
-                Behavior<STATE> b = new Behavior<>();
+                Behavior<STATE> b = new Behavior<STATE>();
                 b.put(new int[]{0, 30, 50, 60}, new STATE[]{STATE.SPIN, STATE.SPEED, STATE.SLOW, STATE.GO});
                 waves.add(new CircleWave(30, pos[0], pos[1], 20, b));
                 counter = 0;
@@ -30,7 +30,7 @@ public class Fish extends Enemy{
         } else {
             if(counter++ > 4) {
                 fleeb(p.getX(), 100);
-                Behavior<STATE> b = new Behavior<>();
+                Behavior<STATE> b = new Behavior<STATE>();
                 if(flip = !flip) {
                     b.put(new int[]{0, 10, 30}, new STATE[]{STATE.SPIN, STATE.SPEED, STATE.GO});
                 } else {

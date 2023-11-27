@@ -9,8 +9,7 @@ public class Vec{
     // array of doublelex numbers
     public Vec(double[] c){
         elements = new double[c.length];
-        for(int i = 0; i < c.length; i++)
-            elements[i] = c[i];
+        System.arraycopy(c, 0, elements, 0, c.length);
     }
 
     // new vector with l elements
@@ -173,12 +172,12 @@ public class Vec{
     }
 
     public String toString(){
-        String s = "⟨ ";
+        StringBuilder s = new StringBuilder("⟨ ");
         for(int i = 0; i < length()-1; i++){
-            s += elements[i] + "   ";
+            s.append(elements[i]).append("   ");
         }
-        s += elements[length()-1] + " ⟩\n";
-        return s;
+        s.append(elements[length() - 1]).append(" ⟩\n");
+        return s.toString();
     }
 
 }

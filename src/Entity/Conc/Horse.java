@@ -28,7 +28,7 @@ public class Horse extends Enemy {
         } else {
             if(counter++ > 10) {
                 fleeb(250, 100);
-                Behavior<STATE> b = new Behavior<>();
+                Behavior<STATE> b = new Behavior<STATE>();
                 b.put(new int[]{0, 20}, new STATE[]{STATE.SPEED, STATE.GO});
                 waves.add(new ForwardWave(20, pos[1]+10, b));
                 counter = 0;

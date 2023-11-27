@@ -19,7 +19,7 @@ public class Polyn {
 
     // 0 polynomial
     public Polyn(int l){
-        coeffs = new double[l];;
+        coeffs = new double[l];
     }
 
     // GETTERS
@@ -202,8 +202,7 @@ public class Polyn {
     // remove first j terms
     public Polyn shrink(int j){
         double[] u = new double[length()-j];
-        for(int i = 0; i < u.length; i++)
-            u[i] = coeffs[i+j];
+        System.arraycopy(coeffs, j, u, 0, u.length);
         return new Polyn(u);
     }
 
@@ -217,11 +216,11 @@ public class Polyn {
     }
 
     public String toString(){
-        String s = "⟨ ";
+        StringBuilder s = new StringBuilder("⟨ ");
         for(int i = 0; i < length()-1; i++){
-            s += coeffs[i] + "   ";
+            s.append(coeffs[i]).append("   ");
         }
-        s += coeffs[length()-1] + " ⟩\n";
-        return s;
+        s.append(coeffs[length() - 1]).append(" ⟩\n");
+        return s.toString();
     }
 }
