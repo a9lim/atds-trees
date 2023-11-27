@@ -1,12 +1,12 @@
 package Entity.Conc;
 
-import Entity.GameEntity;
+import Entity.Boss;
 import Entity.Bullet;
+import Entity.GameEntity;
 import Entity.STATE;
 import GUI.Gamescene;
 import GUI.bPanel;
 import Wave.Wave;
-import Entity.Boss;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,20 +20,20 @@ import static Util.OtherUtil.getImage;
 
 public abstract class Enemy extends Boss implements ActionListener {
 
-    protected int[] vel;
+    protected final int[] vel;
     protected boolean die;
 
-    protected Player p;
+    protected final Player p;
 
     protected LinkedList<GameEntity> th;
 
     protected LinkedList<Wave> waves;
 
-    protected Gamescene source;
+    protected final Gamescene source;
 
-    protected Timer t;
+    protected final Timer t;
 
-    protected BufferedImage face;
+    protected final BufferedImage face;
 
     protected int lives;
 

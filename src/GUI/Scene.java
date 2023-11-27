@@ -1,15 +1,22 @@
 package GUI;
 
+import Util.OtherUtil;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 public abstract class Scene {
-    protected BufferedImage bg;
-    protected bPanel pan;
-    public Scene(bPanel p){
+    protected final BufferedImage bg;
+    protected final bPanel pan;
+    public Scene(bPanel p, BufferedImage b){
         pan = p;
+        bg = b;
+    }
+    public Scene(bPanel p, String b){
+        pan = p;
+        bg = OtherUtil.getImage(b);
     }
     public BufferedImage getImage(String s) {
         try {

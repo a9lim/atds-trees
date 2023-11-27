@@ -4,14 +4,11 @@ import Entity.Behavior;
 import Entity.STATE;
 import GUI.Gamescene;
 import Wave.ForwardWave;
-import Wave.Wave;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class Horse extends Enemy {
     private int counter = 16;
-    private boolean flip = true;
     public Horse(Gamescene sc){
         super(sc, "horse.png", "horse2.png",350,"Entity.Conc.Horse");
     }

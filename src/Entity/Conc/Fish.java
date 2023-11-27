@@ -4,9 +4,7 @@ import Entity.Behavior;
 import Entity.STATE;
 import GUI.Gamescene;
 import Wave.CircleWave;
-import Wave.Wave;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class Fish extends Enemy{

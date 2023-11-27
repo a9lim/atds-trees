@@ -1,7 +1,7 @@
 package GUI;
 
+import javax.swing.*;
 import java.awt.*;
-import javax.swing.JPanel;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
