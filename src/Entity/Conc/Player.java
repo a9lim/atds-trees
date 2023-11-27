@@ -2,6 +2,7 @@ package Entity.Conc;
 
 import Entity.Boss;
 import Entity.GameEntity;
+import GUI.bPanel;
 import Util.OtherUtil;
 
 import java.awt.*;
@@ -12,12 +13,12 @@ import java.util.LinkedList;
 
 public class Player extends Boss {
 
-    private LinkedList<GameEntity> b;
+    private final LinkedList<GameEntity> b;
     private boolean slow;
     private final int[] vel;
     private boolean die;
     private boolean shoot;
-    private BufferedImage face;
+    private final BufferedImage face;
 
     public Player(LinkedList<GameEntity> u){
         super("cubo.png",150,750,3,5,"Cubo");
@@ -33,11 +34,32 @@ public class Player extends Boss {
         return name;
     }
 
-    public void setVelX(int u){
-        vel[0] = u;
+    public void left(){
+        if(pos[0] > dim[0])
+            vel[0] = -1;
     }
-    public void setVelY(int u){
-        vel[1] = u;
+
+    public void right(){
+        if(pos[0] < bPanel.SIZE[0] - dim[0])
+            vel[0] = 1;
+    }
+
+    public void lrstop(){
+        vel[0] = 0;
+    }
+
+    public void up(){
+        if(pos[1] > dim[1])
+            vel[1] = -1;
+    }
+
+    public void down(){
+        if(pos[1] < bPanel.SIZE[1] - dim[1])
+            vel[1] = 1;
+    }
+
+    public void udstop(){
+        vel[1] = 0;
     }
 
     public void update(){
@@ -48,11 +70,8 @@ public class Player extends Boss {
             pos[0] += 3*vel[0];
             pos[1] += 3*vel[1];
         }
-        for(GameEntity v: b){
-            if(Math.hypot(v.getX()-pos[0], v.getY()-pos[1]) < hbrad + v.getHbrad()) {
-                die = true;
-            }
-        }
+        if(b.stream().anyMatch(v -> Math.hypot(v.getX()-pos[0], v.getY()-pos[1]) < hbrad + v.getHbrad()))
+            die = true;
     }
     public void setSlow(boolean b){
         slow = b;

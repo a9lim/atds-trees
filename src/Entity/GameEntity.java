@@ -1,10 +1,10 @@
 package Entity;
 
+import Util.OtherUtil;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
-
-import static Util.OtherUtil.getImage;
 
 public abstract class GameEntity {
     protected final BufferedImage sprite;
@@ -22,10 +22,7 @@ public abstract class GameEntity {
     }
 
     public GameEntity(String a, int u, int v, int h){
-        hbrad = h;
-        sprite = getImage(a);
-        pos = new int[]{u,v};
-        dim = new int[]{sprite.getWidth()/2,sprite.getHeight()/2};
+        this(OtherUtil.getImage(a),u,v,h);
     }
 
     public abstract void update();

@@ -21,24 +21,13 @@ public abstract class Wave {
         be = b;
     }
 
-    public BufferedImage getImage(String s) {
-        try {
-            return ImageIO.read(bPanel.class.getClassLoader().getResource(s));
-        } catch (Exception ex) {
-            System.err.println("images broke");
-            System.err.println(ex.getStackTrace());
-            return null;
-        }
-    }
-
     public LinkedList<Bullet> getEntities() {
         return entities;
     }
     
     public void update(){
         if((temp = be.get(count++)) != null)
-            for(Bullet v: entities)
-                v.setState(temp);
+            entities.forEach(v -> v.setState(temp));
     }
 }
 

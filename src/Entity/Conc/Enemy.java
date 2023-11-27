@@ -25,9 +25,9 @@ public abstract class Enemy extends Boss implements ActionListener {
 
     protected final Player p;
 
-    protected LinkedList<GameEntity> th;
+    protected final LinkedList<GameEntity> th;
 
-    protected LinkedList<Wave> waves;
+    protected final LinkedList<Wave> waves;
 
     protected final Gamescene source;
 
@@ -58,12 +58,10 @@ public abstract class Enemy extends Boss implements ActionListener {
     }
 
     public void update(){
-        if (pos[0] + vel[0] > bPanel.SIZE[0] || pos[0] + vel[0] < 0){
+        if (pos[0] + vel[0] > bPanel.SIZE[0] || pos[0] + vel[0] < 0)
             vel[0] = -vel[0];
-        }
-        if (pos[1] + vel[1] > bPanel.SIZE[1] || pos[1] + vel[1] < 0){
+        if (pos[1] + vel[1] > bPanel.SIZE[1] || pos[1] + vel[1] < 0)
             vel[1] = -vel[1];
-        }
         pos[0] += vel[0];
         pos[1] += vel[1];
         if(p.isShoot() && Math.abs(pos[0]-p.getX()) < 5 + hbrad) {

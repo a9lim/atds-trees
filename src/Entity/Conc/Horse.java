@@ -3,9 +3,12 @@ package Entity.Conc;
 import Entity.Behavior;
 import Entity.STATE;
 import GUI.Gamescene;
+import Util.OtherUtil;
 import Wave.ForwardWave;
 
 import java.awt.event.ActionEvent;
+import java.util.Random;
+import java.util.random.RandomGenerator;
 
 public class Horse extends Enemy {
     private int counter = 16;
@@ -13,10 +16,9 @@ public class Horse extends Enemy {
         super(sc, "horse.png", "horse2.png",350,"Entity.Conc.Horse");
     }
     public void actionPerformed(ActionEvent e) {
-
         if(lives > 0) {
             if (counter++ > 15) {
-                fleeb(p.getX() + (int) (Math.random() * 200) - 100, (int) (Math.random() * 200) + 75);
+                fleeb(p.getX() + OtherUtil.RANDOM.nextInt(-100,100), OtherUtil.RANDOM.nextInt(75,275));
                 counter = 0;
             } else if (counter < 13) {
                 drophone(pos[0], pos[1]);

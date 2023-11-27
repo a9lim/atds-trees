@@ -4,8 +4,12 @@ import GUI.bPanel;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.util.Random;
+
 
 public class OtherUtil {
+
+    public static final Random RANDOM = new Random();
     public static BufferedImage getImage(String s) {
         try {
             return ImageIO.read(bPanel.class.getClassLoader().getResource(s));
@@ -24,4 +28,5 @@ public class OtherUtil {
     public static int cos(int n, int i, double r){
         return (int)(r*Math.cos(2*Math.PI*i/n));
     }
+
 }

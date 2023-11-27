@@ -6,10 +6,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class bPanel extends JPanel implements KeyListener {
-    private Image bg;
     private Scene scene;
 
-    private Scene[] scenes;
+    private final Scene[] scenes = new Scene[6];
 
     private int stage;
 
@@ -20,7 +19,6 @@ public class bPanel extends JPanel implements KeyListener {
 
         try {
             stage = 0;
-            scenes = new Scene[6];
             scenes[0] = new Titlescene(this);
             scenes[1] = new Cutscene(this,new String[]{"I'll be your killer fish for the evening","cringe"}, "fish3.png","Fish:");
             scenes[2] = new Gamescene(this,1);
@@ -35,7 +33,7 @@ public class bPanel extends JPanel implements KeyListener {
         }
     }
 
-    public void grunk(){
+    public void update(){
         scene.update();
     }
 
@@ -53,8 +51,8 @@ public class bPanel extends JPanel implements KeyListener {
 
     public void advance() {
         scene = scenes[stage++];
-        if(scene instanceof Gamescene)
-            ((Gamescene)scene).start();
+        if(scene instanceof Gamescene g)
+            g.start();
         repaint();
     }
 }
