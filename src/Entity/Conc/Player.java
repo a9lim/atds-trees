@@ -1,16 +1,19 @@
 package Entity.Conc;
 
-import Entity.Entity;
+import Entity.Boss;
+import Entity.GameEntity;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.util.LinkedList;
 
+import static Util.OtherUtil.getImage;
 
-public class Player extends Entity {
 
-    private LinkedList<Entity> b;
+public class Player extends Boss {
+
+    private LinkedList<GameEntity> b;
     private boolean slow;
     private int[] vel;
     private boolean die;
@@ -18,15 +21,18 @@ public class Player extends Entity {
     private String name;
     private BufferedImage face;
 
-    public Player(LinkedList<Entity> u){
-        super("cubo.png",150,750,3);
+    public Player(LinkedList<GameEntity> u){
+        super("cubo.png",150,750,3,5,"Cubo");
         face = getImage("cubo2.png");
         b = u;
         slow = false;
         die = false;
         shoot = false;
         vel = new int[2];
-        name = "Cubo";
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setVelX(int u){
@@ -44,9 +50,10 @@ public class Player extends Entity {
             pos[0] += 3*vel[0];
             pos[1] += 3*vel[1];
         }
-        for(Entity v: b){
-            if(Math.hypot(v.getX()-pos[0], v.getY()-pos[1]) < hbrad + v.getHbrad())
+        for(GameEntity v: b){
+            if(Math.hypot(v.getX()-pos[0], v.getY()-pos[1]) < hbrad + v.getHbrad()) {
                 die = true;
+            }
         }
     }
     public void setSlow(boolean b){

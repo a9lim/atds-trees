@@ -4,7 +4,7 @@ import Entity.Conc.Enemy;
 import Entity.Conc.Fish;
 import Entity.Conc.Horse;
 import Entity.Conc.Player;
-import Entity.Entity;
+import Entity.GameEntity;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -12,10 +12,10 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 
 public class Gamescene extends Scene{
-    private LinkedList<Entity> thing;
+    private LinkedList<GameEntity> thing;
     private Player player;
     private Enemy enemy;
-    private Entity temp;
+    private GameEntity temp;
 
     public Gamescene(bPanel p, int i){
         super(p);
@@ -30,7 +30,7 @@ public class Gamescene extends Scene{
         thing.add(enemy);
     }
     public void update(){
-        ListIterator<Entity> it = thing.listIterator();
+        ListIterator<GameEntity> it = thing.listIterator();
         while(it.hasNext()) {
             temp = it.next();
             temp.update();
@@ -41,7 +41,7 @@ public class Gamescene extends Scene{
     }
 
     public void display(Graphics g) {
-        for(Entity t: thing)
+        for(GameEntity t: thing)
             t.paint(g,pan);
         player.paint(g,pan);
     }
@@ -65,7 +65,7 @@ public class Gamescene extends Scene{
         }
     }
 
-    public LinkedList<Entity> getThing() {
+    public LinkedList<GameEntity> getThing() {
         return thing;
     }
 

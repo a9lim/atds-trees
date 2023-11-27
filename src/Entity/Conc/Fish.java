@@ -14,7 +14,6 @@ public class Fish extends Enemy{
     private boolean flip = true;
     public Fish(Gamescene sc){
         super(sc, "fish.png", "fish2.png",350,"Entity.Conc.Fish");
-        t = new Timer(50, this);
     }
     public void actionPerformed(ActionEvent e) {
         if(lives > 0) {
@@ -42,7 +41,6 @@ public class Fish extends Enemy{
                 th.addAll(waves.getLast().getEntities());
             }
         }
-        for(Wave w: waves)
-            w.update();
+        super.actionPerformed(e);
     }
 }

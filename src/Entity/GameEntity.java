@@ -7,7 +7,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
-public abstract class Entity {
+import static Util.OtherUtil.getImage;
+
+public abstract class GameEntity {
     protected BufferedImage sprite;
     protected int[] pos;
 
@@ -15,14 +17,14 @@ public abstract class Entity {
 
     protected int hbrad;
 
-    public Entity(BufferedImage a, int u, int v, int h){
+    public GameEntity(BufferedImage a, int u, int v, int h){
         hbrad = h;
         sprite = a;
         pos = new int[]{u,v};
         dim = new int[]{a.getWidth()/2,a.getHeight()/2};
     }
 
-    public Entity(String a, int u, int v, int h){
+    public GameEntity(String a, int u, int v, int h){
         hbrad = h;
         sprite = getImage(a);
         pos = new int[]{u,v};
@@ -32,7 +34,6 @@ public abstract class Entity {
     public abstract void update();
 
     public Image getSprite() {
-//        System.out.println(x + " " + y);
         return sprite;
     }
 
@@ -58,16 +59,6 @@ public abstract class Entity {
 
     public int getHbrad() {
         return hbrad;
-    }
-
-    public BufferedImage getImage(String s) {
-        try {
-            return ImageIO.read(bPanel.class.getClassLoader().getResource(s));
-        } catch (Exception ex) {
-            System.err.println("images broke");
-            System.err.println(ex.getStackTrace());
-            return null;
-        }
     }
 
     public void paint(Graphics g, ImageObserver ob) {

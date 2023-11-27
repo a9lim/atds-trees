@@ -38,9 +38,7 @@ public class Cutscene extends Scene{
         }
 
     }
-    public void update(){
-
-    }
+    public void update(){}
 
     public void keyPress(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_Z)

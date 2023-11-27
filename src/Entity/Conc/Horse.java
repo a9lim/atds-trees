@@ -14,7 +14,6 @@ public class Horse extends Enemy {
     private boolean flip = true;
     public Horse(Gamescene sc){
         super(sc, "horse.png", "horse2.png",350,"Entity.Conc.Horse");
-        t = new Timer(50, this);
     }
     public void actionPerformed(ActionEvent e) {
 
@@ -35,7 +34,6 @@ public class Horse extends Enemy {
                 th.addAll(waves.getLast().getEntities());
             }
         }
-        for(Wave w: waves)
-            w.update();
+        super.actionPerformed(e);
     }
 }
